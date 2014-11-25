@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import java.utils.Date;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -114,7 +115,9 @@ public class medicoes extends Activity {
     public void gravarRegistro()
     {
         try{
-            String sql = "INSERT INTO medicoes (Dia, Hora, Glicose, TipoInsulina, Unidades, Periodo, Observacoes) values ('"
+            Date dateBuffer = new Date(calendar.get(Calendar.YEAR));			
+			
+			String sql = "INSERT INTO medicoes (Dia, Hora, Glicose, TipoInsulina, Unidades, Periodo, Observacoes) values ('"
                     +editDia.getText().toString()+"','"
                     +editHora.getText().toString()+"','"
                     +editGlicose.getText().toString()+"','"
