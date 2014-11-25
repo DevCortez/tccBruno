@@ -17,6 +17,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class medicoes extends Activity {
 
@@ -26,7 +27,8 @@ public class medicoes extends Activity {
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
-    private int year, month, day;
+    private Date dataHora;
+    private int year, month, day, hour, minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class medicoes extends Activity {
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
 
         try {abreouCriaBanco();} catch (Exception e) {e.printStackTrace();}
         inicializacaoObjetos();
@@ -71,6 +75,7 @@ public class medicoes extends Activity {
     public void inicializacaoObjetos()
     {
         try{
+            editDia =
             editGlicose = (EditText) findViewById(R.id.txtGlicemia);
             editTipoInsulina = (EditText) findViewById(R.id.editText2);
             editUnidades = (EditText) findViewById(R.id.editText3);

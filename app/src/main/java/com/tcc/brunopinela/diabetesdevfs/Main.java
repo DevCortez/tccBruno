@@ -2,12 +2,15 @@ package com.tcc.brunopinela.diabetesdevfs;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.tcc.brunopinela.model.M_usuario;
 
 public class Main extends Activity {
 
@@ -16,6 +19,7 @@ public class Main extends Activity {
     ImageButton imageButton2;
     ImageButton imageButton3;
     ImageButton imageButton5;
+    ImageButton imageButton9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class Main extends Activity {
         addListenerOnButton2();
         addListenerOnButton3();
         addListenerOnButton5();
+        addListenerOnButton9();
 
     }
 
@@ -75,6 +80,27 @@ public class Main extends Activity {
                 startActivity(irParaNovoLembrete);
             }
         });
+    }
+
+    private void addListenerOnButton9() {
+        imageButton9 = (ImageButton) findViewById(R.id.img9);
+
+        imageButton9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                call();
+            }
+        });
+    }
+
+    M_usuario m_usuario = new M_usuario();
+    //String phone = m_usuario.getTelefoneResp().toString();
+    String phone = "911";
+
+    public void call() {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + phone));
+        startActivity(callIntent);
     }
 
     @Override
