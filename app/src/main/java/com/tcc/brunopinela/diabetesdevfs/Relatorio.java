@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import java.utils.Date;
-
 import java.util.Calendar;
+import GraphView.*;
 
 public class Relatorio {
 
@@ -30,14 +30,19 @@ public class Relatorio {
 
         dadosDia.moveToFirst();
 
+        GraphViewSeries dadosRelatorio = new GraphViewSeries();
+
         while(!dadosDia.isAfterLast())
         {
             String momentoAtual dadosDia.getString(1);
+            int glicose = dadosDia.getInt(0);
+
+
 
             dadosDia.moveToNext();
         }
 
-        GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
+        /*GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
                 new GraphViewData(1, 2.0d)
                 , new GraphViewData(2, 1.5d)
                 , new GraphViewData(3, 2.5d)
@@ -46,6 +51,7 @@ public class Relatorio {
 
         http://android-graphview.org/#doc_howto
         http://stackoverflow.com/questions/17945912/get-string-date-time-and-int-from-sqlite-database-in-android
+        */
     }
 
 }
