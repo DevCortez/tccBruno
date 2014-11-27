@@ -23,7 +23,19 @@ public class Relatorio {
 
     public void GerarRelatorioDia(SQLiteDatabase bancoDados, Date dia) {
 
-        Cursor dadosDia = bancoDados.rawQuery("SELECT Glicose, Dia WHERE ")
+        String dataInicial = dia.getYear() + "-" + dia.getDay() + "-" + dia.GetMonth();
+        String dataFinal = dia.getYear() + "-" + dia.getDay() + 1 + "-" + dia.GetMonth();
+
+        Cursor dadosDia = bancoDados.rawQuery("SELECT Glicose, Dia WHERE dia >= datetime(""" + dataInicial + """) and dia < datetime(""" + dataFinal + """);");
+
+        dadosDia.moveToFirst();
+
+        while(!dadosDia.isAfterLast())
+        {
+            String momentoAtual dadosDia.getString(1);
+
+            dadosDia.moveToNext();
+        }
 
         GraphViewSeries exampleSeries = new GraphViewSeries(new GraphViewData[] {
                 new GraphViewData(1, 2.0d)
